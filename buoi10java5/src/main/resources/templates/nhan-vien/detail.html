@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th=“http://www.thymeleaf.org”>
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+</head>
+<body>
+<form action="/nhan-vien/update/{id}" method="post" th:object="${nhanVien}">
+    id: <input name="id" type="text" th:field="*{id}"> <br>
+    ma: <input name="ma" type="text" th:field="*{ma}"> <br>
+    ten: <input name="ten" type="text" th:field="*{ten}"> <br>
+    ngaySinh: <input name="ngaySinh" type="date" th:field="*{ngaySinh}"> <br>
+    gioi tinh:
+    Nam<input name="gioiTinh" type="radio" value="true" th:field="*{gioiTinh}">
+    Nu<input name="gioiTinh" type="radio" value="false" th:field="*{gioiTinh}"> <br>
+    Chuc vu:
+    <select name="chucVu" th:field="*{chucVu}">
+        <option th:each="chucVu :${listChucVu}"
+                th:value="${chucVu.id}"
+                th:text="${chucVu.ten}"></option>
+    </select>
+    <button type="submit">update</button>
+</form>
+</body>
+</html>
